@@ -1,0 +1,47 @@
+<!DOCTY "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/xht />
+<title>ZDAK_GIRIS_12</title>
+</head>
+<body>
+<table class="outerTable">
+  <tr class="normalBoldLarge">
+     <td><h2>Code listing for: ZDAK_GIRIS_12</h2>
+<h3> Description: </h3></td>
+   </tr>
+  <tr>
+     <td>
+     <table class="innerTable">
+       <tr>
+          <td>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;Report&nbsp;ZDAK_GIRIS_12<br />
+*&---------------------------------------------------------------------*<br />
+*&<br />
+*&---------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+REPORT zdak_giris_12.<br />
+<br />
+DATA: connid          TYPE sbook-connid,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fldate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TYPE&nbsp;sbook-fldate,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gv_ort_tutar&nbsp;&nbsp;&nbsp;&nbsp;TYPE&nbsp;sbook-forcuram,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gv_toplam_tutar&nbsp;TYPE&nbsp;sbook-forcuram.<br />
+Data gv_sayi type sy-dbcnt.<br />
+SELECT connid fldate AVG( forcuram ) SUM( forcuram )<br />
+&nbsp;&nbsp;INTO&nbsp;(&nbsp;connid,&nbsp;fldate,&nbsp;gv_ort_tutar,&nbsp;gv_toplam_tutar&nbsp;)<br />
+&nbsp;&nbsp;FROM&nbsp;sbook&nbsp;GROUP&nbsp;BY&nbsp;connid&nbsp;fldate.<br />
+<br />
+&nbsp;&nbsp;gv_sayi&nbsp;=&nbsp;sy-dbcnt.<br />
+&nbsp;&nbsp;write:&nbsp;gv_sayi.<br />
+&nbsp;&nbsp;Write:&nbsp;/&nbsp;'Uçuþ&nbsp;no:',connid,'Uçuþ&nbsp;Tarihi:',&nbsp;fldate,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Tutar&nbsp;ortalamasý:',gv_ort_tutar,'Tutar&nbsp;toplamý:',gv_toplam_tutar.<br />
+ENDSELECT.<br />
+            </div>
+          </td>
+        </tr>
+      </table>
+      </td>
+      </tr>
